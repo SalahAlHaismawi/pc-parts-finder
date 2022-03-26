@@ -1,3 +1,6 @@
+from numpy import mat
+
+
 def show_gpu_menu():
     print(
         "------------------------------------------------------\n"
@@ -10,3 +13,9 @@ def show_gpu_menu():
        +"|3-Recommended FPS per dollar Graphic Card           |\n"
        +"|----------------------------------------------------|\n"
     )
+    ch=input()
+    def f(ch):
+        match ch:
+            case '1': print("1")
+            case '2': print("2")
+            case '3': print("3")
