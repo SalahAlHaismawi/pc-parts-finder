@@ -1,4 +1,7 @@
 from gpu import *
+from webscrapping import *
+import sys
+sys.tracebacklimit=0
 def starting_menu():
     print(
         "|----------------------------------------------------------------------|\n"
@@ -25,6 +28,9 @@ def starting_menu():
     f(ch)
         
             
+
+
+if __name__=="__main__":
+    starting_menu()
     
-    
-starting_menu()    
+        
