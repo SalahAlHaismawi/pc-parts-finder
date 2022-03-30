@@ -2,22 +2,22 @@ from bs4 import BeautifulSoup
 import requests
 #----------------------------------this function is to search newegg for a specific gpu model-----------------------------------------------------------
 def search_gpu():
-     open('pc/data/gpu.csv','w').close()
+     open('pc/data/gpu.csv','w').close()                                        #clears the file at the start of the function
      userinput= input('Please Enter the name of the GPU: ')
-     destenation ='https://www.newegg.com/p/pl?d='+userinput +'&N=100006662'
+     destenation ='https://www.newegg.com/p/pl?d='+userinput +'&N=100006662'    
 
      html_text = requests.get(destenation).text
      soup= BeautifulSoup(html_text, 'lxml')
-     items=soup.find_all('div', class_ = 'item-cell')
+     items=soup.find_all('div', class_ = 'item-cell')                           #the container that contains graphic cards and all thier information
 
      
-     for item in items:
+     for item in items:                                                         #looping to get the rest of the information we need.
           try:
-               gpu = item.find('a', class_ ='item-title').text
-               gpu_price = item.find('li', class_ ='price-current').text.split(" " ,0)[0].split("(")[0]
+               gpu = item.find('a', class_ ='item-title').text                  #finds all gpu names from newegg 
+               gpu_price = item.find('li', class_ ='price-current').text.split(" " ,0)[0].split("(")[0] #finds all gpu prices from newegg
                
                with open('pc/data/gpu.csv','a') as f:
-                    f.write(gpu+ '\n')
+                    f.write(gpu+ '\n')                                          #writes data to gpu.csv file inside data folder
                     f.write(gpu_price+ '\n')
                     print(gpu)
                     print(gpu_price)
@@ -46,12 +46,12 @@ def search_cpu():
                     print(cpu)
                     print(cpu_price)
           except AttributeError:
-               print("There is no such attribute")          
+               print("")          
 #---------------------------------------------------------------------------------------------------------------------------------------------------------          
 #---------------------------------------This function is to search for a specifc ram capacity/model-------------------------------------------------------          
 def search_ram():
      open('pc/data/ram.csv','w').close()
-     user_input = input('Please Enter the name of the RAM')
+     user_input = input('Please Enter the name of the RAM: ')
      destenation = 'https://www.newegg.com/p/pl?d='+user_input+'&N=100007611'
 
      html_text = requests.get(destenation).text
@@ -95,5 +95,4 @@ def gpu_benchmark():
           
           except AttributeError:
                print('')
-#---------------------------------------------------------------------------------------------------------------------------------------------------------     
-gpu_benchmark()
+#---------------------------------------------------------------------------------------------------------------------------------------------------------    
