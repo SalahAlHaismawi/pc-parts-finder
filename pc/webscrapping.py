@@ -71,19 +71,20 @@ def search_ram():
                print("There is no such attribute")
 
 def gpu_benchmark():
-     user_input=input('Please Enter the GPU you want to see benchmarks for: ')
      destenation = "https://benchmarks.ul.com/compare/best-gpus"
      html_text=requests.get(destenation).text
      soup = BeautifulSoup(html_text,'lxml')
-     items= soup.find_all('tr').text
-     
+     items= soup.find_all('tr')
+
      for item in items:
           try:
-               gpu_name=item.find('a',class_ ='OneLinkNoTx')
-     
+            gpu_name=item.find('a',class_='OneLinkNoTx').text.strip()
+            gpu_preformance=item.find('span',class_='bar-score').text.strip()
+            print(gpu_name)
+            print(gpu_preformance)
      
           except AttributeError:
-               print()
+               print('nope')
      
      
      
