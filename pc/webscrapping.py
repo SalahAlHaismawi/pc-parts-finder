@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd 
 
 def search_gpu():
      userinput= input('Please Enter the name of the GPU: ')
@@ -13,11 +14,11 @@ def search_gpu():
      for item in items:
           try:
                gpu = item.find('a', class_ ='item-title').text
-               gpu_price = item.find('li', class_ ='price-current').text.split(" ",0)[0].split("(")[0]
+               gpu_price = item.find('li', class_ ='price-current').text.split(" " ,0)[0].split("(")[0]
                
                with open('pc/data/gpu.csv','a') as f:
-                    f.write(gpu+'\n')
-                    f.write(gpu_price+'\n')
+                    f.write(gpu+ '\n')
+                    f.write(gpu_price+ '\n')
                     print(gpu)
                     print(gpu_price)
           except AttributeError:
@@ -70,8 +71,12 @@ def search_ram():
           except AttributeError:
                print("There is no such attribute")
 
+
+
 def gpu_benchmark():
+     open('pc/data/gpubenchmarks.csv','w').close()
      destenation = "https://benchmarks.ul.com/compare/best-gpus"
+     user_input=input('Enter the GPU you want to find: ').upper()
      html_text=requests.get(destenation).text
      soup = BeautifulSoup(html_text,'lxml')
      items= soup.find_all('tr')
@@ -80,13 +85,17 @@ def gpu_benchmark():
           try:
             gpu_name=item.find('a',class_='OneLinkNoTx').text.strip()
             gpu_preformance=item.find('span',class_='bar-score').text.strip()
-            print(gpu_name)
-            print(gpu_preformance)
-     
+            with open('pc/data/gpubenchmarks.csv','a') as f:
+               f.write(gpu_name+'  ') 
+               f.write(gpu_preformance)
+               f.write('\n')
+               if user_input in gpu_name:
+                    print(f'GPU: {gpu_name}   3DMARK Benchmark: {gpu_preformance}')
+          
           except AttributeError:
-               print('nope')
+               print('')
      
-     
+         
      
      
      
