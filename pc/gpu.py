@@ -10,14 +10,13 @@ def show_gpu_menu():
        +"|----------------------------------------------------|\n"
        +"|2-Check a specific Graphic Card price               |\n"
        +"|----------------------------------------------------|\n"
-       +"|3-Recommended FPS per dollar Graphic Card           |\n"
-       +"|----------------------------------------------------|\n"
     )
     ch=input()
     def f(ch):
         match ch:
-            case '1': print(1)
-            case '2': search_gpu()
-            case '3': print("3")
+            case '1': gpu_benchmark()
+            case '2': search_gpu()          
     
-    f(ch)        
+    f(ch)
+    
+            

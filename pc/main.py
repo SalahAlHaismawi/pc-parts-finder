@@ -7,11 +7,11 @@ def starting_menu():
         "|----------------------------------------------------------------------|\n"
        +"|             THIS PROGRAM WAS MADE BY SALAH ALHAISMAWI                |\n"
        +"|----------------------------------------------------------------------|\n"
-       +"|1-To view Graphic cards and thier benchmarks                          |\n" 
-       +"|2-To view CPU's and thier benchmarks                                  |\n"
-       +"|3-To view Ram Models                                                  |\n"
-       +"|4-To Choose a recommended psu depending on your need:                 |\n"
-       +"|5-To pick a Stylish Case for your needs                               |\n"
+       +"|1-To view Graphic cards and thier benchmarks.                          |\n" 
+       +"|2-To view CPU's and thier benchmarks.                                  |\n"
+       +"|3-To view RAM Models.                                                  |\n"
+       +"|4-To Choose a recommended psu depending on your need.                 |\n"
+       +"|5-To pick a Stylish Case for your needs.                               |\n"
        +"|----------------------------------------------------------------------|\n"    
     )
     
